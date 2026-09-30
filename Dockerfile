@@ -4,8 +4,8 @@ docker run -d \
   --device /dev/kvm \
   -p 6080:6080 \
   -p 2026:2222 \
-  -e RAM=430080 \
-  -e CPU=24 \
+  -e RAM=32000 \
+  -e CPU=4 \
   -e DISK=2048 \
   -e VNC_PASS=admin \
   -e ROOT_PASS=admin \
