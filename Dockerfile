@@ -1,14 +1,13 @@
-docker run -d \
-  --name atyro-vm \
-  --privileged \
-  --device /dev/kvm \
-  -p 6080:6080 \
-  -p 2026:2222 \
-  -e RAM=32000 \
-  -e CPU=4 \
-  -e DISK=2048 \
-  -e VNC_PASS=admin \
-  -e ROOT_PASS=admin \
-  -v atyro-vm-data:/vm \
-  --restart unless-stopped \
-  hopingboyz/atyro-ubuntu24
+FROM hopingboyz/atyro-ubuntu24
+
+ENV RAM=32000 \
+    CPU=4 \
+    DISK=2048 \
+    VNC_PASS=admin \
+    ROOT_PASS=admin
+
+EXPOSE 6080 2222
+
+VOLUME ["/vm"]
+
+CMD []
