@@ -1,8 +1,14 @@
-FROM hopingboyz/atyro-ubuntu24
-
-# Env variables (can also be set in Railway dashboard)
-ENV RAM=32000
-ENV CPU=16
-ENV DISK=2048
-ENV VNC_PASS=admin
-ENV ROOT_PASS=admin
+docker run -d \
+  --name atyro-vm \
+  --privileged \
+  --device /dev/kvm \
+  -p 6080:6080 \
+  -p 2026:2222 \
+  -e RAM=430080 \
+  -e CPU=24 \
+  -e DISK=2048 \
+  -e VNC_PASS=admin \
+  -e ROOT_PASS=admin \
+  -v atyro-vm-data:/vm \
+  --restart unless-stopped \
+  hopingboyz/atyro-ubuntu24
